@@ -1,5 +1,7 @@
 extends Area2D
 
+signal target_reached
+
 # Resources
 @export var label: Label # Label to change message
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -10,8 +12,12 @@ extends Area2D
 @export var shrink_speed: float = 3.5
 @export var min_scale: float = 0.05
 
-# Variables
+# Target Variables
 var is_reached: bool = false
+
+
+func _ready() -> void:
+	add_to_group("targets")
 
 
 func _process(delta: float) -> void:
@@ -27,6 +33,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		is_reached = true
 		collision_shape.set_deferred("disabled", true)
+		target_reached.emit()
 		
 		if label:
 			label.text = "TARGET REACHED!"
