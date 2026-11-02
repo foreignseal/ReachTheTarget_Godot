@@ -5,14 +5,31 @@
 [ext_resource type="PackedScene" path="res://scenes/components/DangerZone.tscn" id="4_danger"]
 [ext_resource type="Script" uid="uid://ds8j5k4u8vubb" path="res://scripts/TargetSpawns.gd" id="5_spawns"]
 [ext_resource type="Script" uid="uid://daiqoi3wwvoxr" path="res://scripts/TargetIndicators.gd" id="6_indicators"]
+[ext_resource type="PackedScene" uid="uid://b84k1m7w5yaq2" path="res://scenes/components/Wall.tscn" id="7_wall"]
+[ext_resource type="Script" uid="uid://dkorqenanedk0" path="res://scripts/NavigationRegion.gd" id="8_nav"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
+vertices = PackedVector2Array(3260.1563, 2583.6719, -2793.461, 2392.289, -2999.4766, -1742.0234, 3329.8281, -1757.9688)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-3010, -1752, 3340, -1768, 3270, 2594, -2803, 2402)])
+border_size = 82.0
+agent_radius = 64.0
 
 [node name="Game" type="Node2D" unique_id=1105542259]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=116437464]
+navigation_polygon = SubResource("NavigationPolygon_game")
+script = ExtResource("8_nav")
+
+[node name="ObstacleWall" parent="NavigationRegion2D" unique_id=1682371849 instance=ExtResource("7_wall")]
+position = Vector2(-120, -50)
+scale = Vector2(0.5, 2)
 
 [node name="DangerZone" parent="." unique_id=1567770249 node_paths=PackedStringArray("message") instance=ExtResource("4_danger")]
 message = NodePath("../Player/Screen/Label")
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1343114655]
-position = Vector2(250, 0)
+position = Vector2(62, 153)
 
 [node name="Player" parent="." unique_id=1511318249 node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_78awf")]
 position = Vector2(-594, 433)
@@ -46,6 +63,7 @@ script = ExtResource("6_indicators")
 
 [node name="TargetSpawns" type="Node2D" parent="." unique_id=1381045291 node_paths=PackedStringArray("label")]
 script = ExtResource("5_spawns")
+moving_target_ratio = 0.3
 label = NodePath("../Player/Screen/Label")
 
 [node name="Spawn1" type="Node2D" parent="TargetSpawns" unique_id=787345189]

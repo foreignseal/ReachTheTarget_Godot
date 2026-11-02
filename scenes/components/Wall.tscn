@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b84k1m7w5yaq2"]
+
+[ext_resource type="Texture2D" uid="uid://56eo55gxp2o7" path="res://assets/sprites/Square.png" id="1_square"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
+size = Vector2(128, 128)
+
+[node name="Wall" type="StaticBody2D" unique_id=315357199]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=963455458]
+modulate = Color(0.3, 0.32, 0.36, 1)
+texture = ExtResource("1_square")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=480280619]
+shape = SubResource("RectangleShape2D_wall")
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="." unique_id=1880711097]
+vertices = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
+affect_navigation_mesh = true

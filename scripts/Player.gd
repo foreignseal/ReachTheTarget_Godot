@@ -6,7 +6,9 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
-	global_position = spawn_point.global_position
+	add_to_group("player")
+	if spawn_point:
+		global_position = spawn_point.global_position
 
 func _physics_process(delta: float) -> void:
 	var direction := Vector2(
@@ -18,5 +20,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn() -> void:
-	global_position = spawn_point.global_position
+	if spawn_point:
+		global_position = spawn_point.global_position
 	velocity = Vector2.ZERO

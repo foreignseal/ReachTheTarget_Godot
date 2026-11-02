@@ -3,6 +3,7 @@ extends Node2D
 @export var target_scene: PackedScene = preload("res://scenes/components/Target.tscn")
 
 @export var initial_target_count: int = 1
+@export_range(0.0, 1.0) var moving_target_ratio: float = 0.25
 @export var label: Label
 @export var respawn_on_reach: bool = true
 
@@ -34,6 +35,9 @@ func spawn_target() -> Area2D:
 	
 	var target_instance: Area2D = target_scene.instantiate()
 	target_instance.global_position = chosen_loc.global_position
+	
+	if randf() < moving_target_ratio:
+		target_instance.is_moving_target = true
 	
 	target_instance.label = label
 	
