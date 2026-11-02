@@ -56,3 +56,4 @@ move_down={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.8862616, 0.88626146, 0.8862615, 1)

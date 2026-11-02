@@ -7,9 +7,22 @@
 
 [node name="Game" type="Node2D" unique_id=1105542259]
 
-[node name="Screen" type="Camera2D" parent="." unique_id=683318714]
+[node name="Target" parent="." unique_id=1018898236 instance=ExtResource("3_s0nni")]
+position = Vector2(476, -2)
 
-[node name="Label" type="Label" parent="Screen" unique_id=435409345]
+[node name="DangerZone" parent="." unique_id=1567770249 node_paths=PackedStringArray("message") instance=ExtResource("4_danger")]
+message = NodePath("../Player/Screen/Label")
+
+[node name="SpawnPoint" type="Marker2D" parent="." unique_id=1343114655]
+position = Vector2(250, 0)
+
+[node name="Player" parent="." unique_id=1511318249 node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_78awf")]
+position = Vector2(-594, 433)
+spawn_point = NodePath("../SpawnPoint")
+
+[node name="Screen" type="Camera2D" parent="Player" unique_id=683318714]
+
+[node name="Label" type="Label" parent="Player/Screen" unique_id=435409345]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -23,21 +36,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_cpr0p")
 theme_override_font_sizes/font_size = 32
 text = "REACH THE TARGET!"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="SpawnPoint" type="Marker2D" parent="Screen" unique_id=1343114655]
-position = Vector2(-544, -2)
-
-[node name="Player" parent="Screen" unique_id=1511318249 node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_78awf")]
-position = Vector2(-544, -2)
-spawn_point = NodePath("../SpawnPoint")
-
-[node name="Target" parent="Screen" unique_id=1018898236 instance=ExtResource("3_s0nni")]
-position = Vector2(476, -2)
-
-[node name="DangerZone" parent="Screen" unique_id=1567770249 node_paths=PackedStringArray("message") instance=ExtResource("4_danger")]
-message = NodePath("../Label")
