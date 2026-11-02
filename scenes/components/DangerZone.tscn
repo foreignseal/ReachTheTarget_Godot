@@ -1,0 +1,20 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/DangerZone.gd" id="1_danger"]
+[ext_resource type="Texture2D" uid="uid://56eo55gxp2o7" path="res://assets/sprites/Square.png" id="2_square"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_danger"]
+size = Vector2(128, 128)
+
+[node name="DangerZone" type="Area2D"]
+script = ExtResource("1_danger")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.97, 0.2, 0.2, 0.75)
+texture = ExtResource("2_square")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_danger")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+

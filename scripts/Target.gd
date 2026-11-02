@@ -10,7 +10,7 @@ extends Area2D
 @export var shrink_speed: float = 3.5
 @export var min_scale: float = 0.05
 
-#
+# Variables
 var is_reached: bool = false
 
 

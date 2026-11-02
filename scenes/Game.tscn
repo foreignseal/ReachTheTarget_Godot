@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://dok385m322ex8" path="res://assets/fonts/lilita_one_regular.ttf" id="1_cpr0p"]
 [ext_resource type="PackedScene" uid="uid://1kc6yj2coy7k" path="res://scenes/components/Player.tscn" id="2_78awf"]
 [ext_resource type="PackedScene" uid="uid://ckorya85re6s1" path="res://scenes/components/Target.tscn" id="3_s0nni"]
+[ext_resource type="PackedScene" path="res://scenes/components/DangerZone.tscn" id="4_danger"]
 
 [node name="Game" type="Node2D" unique_id=1105542259]
 
@@ -28,9 +29,15 @@ text = "REACH THE TARGET!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player" parent="Screen" unique_id=1511318249 instance=ExtResource("2_78awf")]
-position = Vector2(363, -4)
+[node name="SpawnPoint" type="Marker2D" parent="Screen" unique_id=1343114655]
+position = Vector2(-544, -2)
 
-[node name="Target" parent="Screen" unique_id=1018898236 node_paths=PackedStringArray("message") instance=ExtResource("3_s0nni")]
+[node name="Player" parent="Screen" unique_id=1511318249 node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_78awf")]
+position = Vector2(-544, -2)
+spawn_point = NodePath("../SpawnPoint")
+
+[node name="Target" parent="Screen" unique_id=1018898236 instance=ExtResource("3_s0nni")]
 position = Vector2(476, -2)
+
+[node name="DangerZone" parent="Screen" unique_id=1567770249 node_paths=PackedStringArray("message") instance=ExtResource("4_danger")]
 message = NodePath("../Label")
