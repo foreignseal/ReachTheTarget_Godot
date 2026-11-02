@@ -15,9 +15,13 @@ WASD ou setas.
 - Feedback
 
 ## Melhorias implementadas
-- Feedback no Target
-- Zona de Perigo
-- Target aleatório
+- Feedback no Target: O target fica mais pequeno e desaparece.
+- Zona de Perigo: A zona vermelha teleporta ao inicio.
+- Target aleatório: São criados vários spawners, o target spawna neles.
+- Targets com vida: Alguns targets movem-se, tentando fugir do jogador, mas são mais lentos que o mesmo.
+- Tempo Limitado: O jogador tem 2 minutos para apanhar o maior numero de targets. [Zonas de Perigo retiram tempo! Targets adicionam.]
+- Highscores: Os 3 melhores scores ficam registados! 
+- Mini Maze: Um pequeno mapa para confundir o jogador!
 
 ## Autor
 Ismael Sampaio
