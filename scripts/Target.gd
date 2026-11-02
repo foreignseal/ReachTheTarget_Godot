@@ -105,7 +105,6 @@ func move_with_collision(motion: Vector2) -> bool:
 	
 	return false
 
-
 func _collides_at(target_pos: Vector2) -> bool:
 	if not collision_shape or not collision_shape.shape:
 		return false

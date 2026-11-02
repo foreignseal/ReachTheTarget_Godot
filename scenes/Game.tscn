@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://daiqoi3wwvoxr" path="res://scripts/TargetIndicators.gd" id="6_indicators"]
 [ext_resource type="PackedScene" uid="uid://b84k1m7w5yaq2" path="res://scenes/components/Wall.tscn" id="7_wall"]
 [ext_resource type="Script" uid="uid://dkorqenanedk0" path="res://scripts/NavigationRegion.gd" id="8_nav"]
+[ext_resource type="Script" uid="uid://cctrs2h4kr7ul" path="res://scripts/GameManager.gd" id="9_manager"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_game"]
 vertices = PackedVector2Array(3260.1563, 2583.6719, -2793.461, 2392.289, -2999.4766, -1742.0234, 3329.8281, -1757.9688)
@@ -15,7 +16,87 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-3010, -1752, 3340, -17
 border_size = 82.0
 agent_radius = 64.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card_gameover"]
+content_margin_left = 32.0
+content_margin_top = 28.0
+content_margin_right = 32.0
+content_margin_bottom = 28.0
+bg_color = Color(0.96, 0.96, 0.97, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.97, 0.25, 0.25, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_normal"]
+bg_color = Color(0.3388, 0.8226, 0.3792, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.15, 0.55, 0.2, 0.3)
+shadow_size = 4
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_pressed"]
+bg_color = Color(0.214, 0.5, 0.231, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_start_hover"]
+bg_color = Color(0, 0.9135, 0.2768, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(0.15, 0.55, 0.2, 0.4)
+shadow_size = 6
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neutral_normal"]
+bg_color = Color(0.8, 0.82, 0.85, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.15)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neutral_pressed"]
+bg_color = Color(0.72, 0.74, 0.77, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neutral_hover"]
+bg_color = Color(0.88, 0.9, 0.92, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 4
+shadow_offset = Vector2(0, 3)
+
 [node name="Game" type="Node2D" unique_id=1105542259]
+script = ExtResource("9_manager")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=116437464]
 navigation_polygon = SubResource("NavigationPolygon_game")
@@ -25,8 +106,7 @@ script = ExtResource("8_nav")
 position = Vector2(-120, -50)
 scale = Vector2(0.5, 2)
 
-[node name="DangerZone" parent="." unique_id=1567770249 node_paths=PackedStringArray("message") instance=ExtResource("4_danger")]
-message = NodePath("../Player/Screen/Label")
+[node name="DangerZone" parent="." unique_id=1567770249 instance=ExtResource("4_danger")]
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1343114655]
 position = Vector2(62, 153)
@@ -37,34 +117,12 @@ spawn_point = NodePath("../SpawnPoint")
 
 [node name="Screen" type="Camera2D" parent="Player" unique_id=683318714]
 
-[node name="Label" type="Label" parent="Player/Screen" unique_id=435409345]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -575.5
-offset_top = -315.0
-offset_right = 575.5
-offset_bottom = -261.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_cpr0p")
-theme_override_font_sizes/font_size = 32
-text = "REACH THE TARGET!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="TargetIndicators" type="Node2D" parent="Player/Screen" unique_id=769759112]
 script = ExtResource("6_indicators")
 
-[node name="TargetSpawns" type="Node2D" parent="." unique_id=1381045291 node_paths=PackedStringArray("label")]
+[node name="TargetSpawns" type="Node2D" parent="." unique_id=1381045291]
 script = ExtResource("5_spawns")
 moving_target_ratio = 0.3
-label = NodePath("../Player/Screen/Label")
 
 [node name="Spawn1" type="Node2D" parent="TargetSpawns" unique_id=787345189]
 position = Vector2(-450, -200)
@@ -95,3 +153,156 @@ position = Vector2(500, -200)
 
 [node name="Spawn10" type="Node2D" parent="TargetSpawns" unique_id=62355709]
 position = Vector2(500, 200)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1120676962]
+
+[node name="HUD" type="Control" parent="UI" unique_id=373545071]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ScoreLabel" type="Label" parent="UI/HUD" unique_id=285995953]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 260.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.12, 0.12, 0.14, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 28
+text = "TARGETS: 0"
+
+[node name="TimerContainer" type="HBoxContainer" parent="UI/HUD" unique_id=1546735623]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 16.0
+offset_right = 150.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="TimerLabel" type="Label" parent="UI/HUD/TimerContainer" unique_id=307029291]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.12, 0.14, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 0.9)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 44
+text = "01:00"
+horizontal_alignment = 1
+
+[node name="TimeChangeLabel" type="Label" parent="UI/HUD/TimerContainer" unique_id=1240487102]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.4)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 28
+text = "+10s"
+
+[node name="GameOverScreen" type="Control" parent="UI" unique_id=1957974407]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="UI/GameOverScreen" unique_id=1766504102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/GameOverScreen" unique_id=743638587]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="UI/GameOverScreen/CenterContainer" unique_id=1265656307]
+custom_minimum_size = Vector2(400, 340)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card_gameover")
+
+[node name="VBox" type="VBoxContainer" parent="UI/GameOverScreen/CenterContainer/Card" unique_id=1342523248]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="UI/GameOverScreen/CenterContainer/Card/VBox" unique_id=1362758721]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.25, 0.25, 1)
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 52
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="UI/GameOverScreen/CenterContainer/Card/VBox" unique_id=677782884]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.42, 0.45, 1)
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 22
+text = "Time ran out!"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="UI/GameOverScreen/CenterContainer/Card/VBox" unique_id=612350110]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12, 0.12, 0.14, 1)
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 24
+text = "Targets Collected: 0
+Highest Time: 01:00"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="UI/GameOverScreen/CenterContainer/Card/VBox" unique_id=1643285164]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="RetryBtn" type="Button" parent="UI/GameOverScreen/CenterContainer/Card/VBox" unique_id=861056207]
+custom_minimum_size = Vector2(200, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.1, 0.15, 0.1, 1)
+theme_override_colors/font_hover_color = Color(0.05, 0.1, 0.05, 1)
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_start_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_start_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_start_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "TRY AGAIN"
+
+[node name="MenuBtn" type="Button" parent="UI/GameOverScreen/CenterContainer/Card/VBox" unique_id=590796419]
+custom_minimum_size = Vector2(200, 44)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.2, 0.22, 0.25, 1)
+theme_override_colors/font_hover_color = Color(0.05, 0.05, 0.05, 1)
+theme_override_fonts/font = ExtResource("1_cpr0p")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_neutral_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_neutral_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_neutral_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "MAIN MENU"
+
+[connection signal="pressed" from="UI/GameOverScreen/CenterContainer/Card/VBox/RetryBtn" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/GameOverScreen/CenterContainer/Card/VBox/MenuBtn" to="." method="_on_menu_pressed"]

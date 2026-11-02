@@ -1,5 +1,7 @@
 extends Node2D
 
+signal target_collected
+
 @export var target_scene: PackedScene = preload("res://scenes/components/Target.tscn")
 
 @export var initial_target_count: int = 1
@@ -50,5 +52,6 @@ func spawn_target() -> Area2D:
 
 func _on_target_reached(spawn_location: Node2D) -> void:
 	occupied_spawns.erase(spawn_location)
+	target_collected.emit()
 	if respawn_on_reach:
 		call_deferred("spawn_target")

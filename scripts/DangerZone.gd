@@ -7,5 +7,6 @@ signal player_entered(player: Node2D)
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_entered.emit(body)
-		message.text = "YOU CAN'T TOUCH THAT!"
+		if message:
+			message.text = "YOU CAN'T TOUCH THAT!"
 		body.respawn()

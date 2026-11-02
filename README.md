@@ -20,7 +20,7 @@ WASD ou setas.
 - Target aleatório: São criados vários spawners, o target spawna neles.
 - Main Menu: Para ter tudo organizado.
 - Targets com vida: Alguns targets movem-se, tentando fugir do jogador, mas são mais lentos que o mesmo.
-- Tempo Limitado: O jogador tem 2 minutos para apanhar o maior numero de targets. [Zonas de Perigo retiram tempo! Targets adicionam.]
+- Tempo Limitado: O jogador tem 1 minuto para apanhar o maior numero de targets. [Zonas de Perigo retiram tempo! Targets adicionam.]
 - Highscores: Os 3 melhores scores ficam registados! 
 - Mini Maze: Um pequeno mapa para confundir o jogador! (Gerar Automatico?)
 
