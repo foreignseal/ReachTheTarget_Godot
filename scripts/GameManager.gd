@@ -1,5 +1,6 @@
 extends Node2D
 
+const HighscoreManager = preload("res://scripts/HighscoreManager.gd")
 
 # Game Settings
 @export var time_limit: float = 60.0 # 1 minute
@@ -127,9 +128,21 @@ func trigger_game_over() -> void:
 		return
 	
 	current_state = GameState.GAME_OVER
-	player.set_physics_process(false)
-	game_over_stats_label.text = "Targets Collected: %d\nHighest Time: %s" % [score, _format_time(highest_time)]
-	game_over_screen.visible = true
+	if player:
+		player.set_physics_process(false)
+	
+	var is_new_record: bool = HighscoreManager.save_score(score, highest_time)
+	
+	if game_over_stats_label:
+		if is_new_record and score > 0:
+			game_over_stats_label.text = "★ NEW HIGHSCORE! ★\nTargets Collected: %d\nHighest Time: %s" % [score, _format_time(highest_time)]
+			game_over_stats_label.modulate = Color(0.18, 0.78, 0.32, 1.0)
+		else:
+			game_over_stats_label.text = "Targets Collected: %d\nHighest Time: %s" % [score, _format_time(highest_time)]
+			game_over_stats_label.modulate = Color(0.12, 0.12, 0.14, 1.0)
+	
+	if game_over_screen:
+		game_over_screen.visible = true
 
 func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()

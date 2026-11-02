@@ -17,6 +17,8 @@ signal target_reached
 @export var move_speed: float = 120.0 
 @export var moving_color: Color = Color(0.35, 0.85, 1.0, 1.0) 
 
+@export var wander_boundary: float = 1600.0
+
 # Target Variables
 var is_reached: bool = false
 var move_direction: Vector2 = Vector2.ZERO
@@ -44,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	
 	wander_timer -= delta
 	
-	if global_position.length() > 600.0:
+	if global_position.length() > wander_boundary:
 		move_direction = (-global_position).normalized()
 		wander_timer = randf_range(2.0, 3.5)
 	elif _is_ray_blocked(global_position, move_direction, 90.0):

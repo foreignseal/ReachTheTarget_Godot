@@ -22,7 +22,7 @@ WASD ou setas.
 - Targets com vida: Alguns targets movem-se, tentando fugir do jogador, mas são mais lentos que o mesmo.
 - Tempo Limitado: O jogador tem 1 minuto para apanhar o maior numero de targets. [Zonas de Perigo retiram tempo! Targets adicionam.]
 - Highscores: Os 3 melhores scores ficam registados! 
-- Mini Maze: Um pequeno mapa para confundir o jogador! (Gerar Automatico?)
+- Mini Maze: Um pequeno mapa para confundir o jogador!
 
 ## Autor
 Ismael Sampaio

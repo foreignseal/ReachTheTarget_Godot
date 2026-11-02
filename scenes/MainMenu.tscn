@@ -35,6 +35,35 @@ shadow_offset = Vector2(0, 6)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_focus"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score_btn_normal"]
+bg_color = Color(0.2, 0.22, 0.25, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score_btn_pressed"]
+bg_color = Color(0.15, 0.16, 0.18, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_score_btn_hover"]
+bg_color = Color(0.3, 0.33, 0.37, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 4
+shadow_offset = Vector2(0, 3)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_quit_normal"]
 bg_color = Color(0.97, 0.25, 0.25, 0.85)
 corner_radius_top_left = 10
@@ -63,6 +92,54 @@ corner_radius_bottom_left = 10
 shadow_color = Color(0.5, 0.1, 0.1, 0.4)
 shadow_size = 4
 shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 32.0
+content_margin_top = 28.0
+content_margin_right = 32.0
+content_margin_bottom = 28.0
+bg_color = Color(0.96, 0.96, 0.97, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3388, 0.8226, 0.3792, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 12
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neutral_normal"]
+bg_color = Color(0.8, 0.82, 0.85, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.15)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neutral_pressed"]
+bg_color = Color(0.72, 0.74, 0.77, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_size = 1
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_neutral_hover"]
+bg_color = Color(0.88, 0.9, 0.92, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 4
+shadow_offset = Vector2(0, 3)
 
 [node name="MainMenu" type="Control" unique_id=50917894]
 layout_mode = 3
@@ -115,6 +192,27 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_start_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "START"
 
+[node name="HighscoresButton" type="Button" parent="." unique_id=1849182049]
+custom_minimum_size = Vector2(160, 44)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -68.0
+offset_right = 192.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_score_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_score_btn_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_score_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "HIGHSCORES"
+
 [node name="QuitButton" type="Button" parent="." unique_id=514345654]
 custom_minimum_size = Vector2(44, 44)
 layout_mode = 1
@@ -140,5 +238,104 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_quit_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
 text = "X"
 
+[node name="HighscoresModal" type="Control" parent="." unique_id=987654321]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="HighscoresModal" unique_id=987654322]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="CenterContainer" type="CenterContainer" parent="HighscoresModal" unique_id=987654323]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="HighscoresModal/CenterContainer" unique_id=987654324]
+custom_minimum_size = Vector2(460, 360)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBox" type="VBoxContainer" parent="HighscoresModal/CenterContainer/Card" unique_id=987654325]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="HighscoresModal/CenterContainer/Card/VBox" unique_id=987654326]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.78, 0.28, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 44
+text = "TOP HIGHSCORES"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="HighscoresModal/CenterContainer/Card/VBox" unique_id=987654327]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.42, 0.45, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+text = "TOP 3 RUNS"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="HighscoresModal/CenterContainer/Card/VBox" unique_id=987654328]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ScoresContainer" type="VBoxContainer" parent="HighscoresModal/CenterContainer/Card/VBox" unique_id=987654329]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Spacer2" type="Control" parent="HighscoresModal/CenterContainer/Card/VBox" unique_id=987654330]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ButtonsRow" type="HBoxContainer" parent="HighscoresModal/CenterContainer/Card/VBox" unique_id=987654331]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ResetButton" type="Button" parent="HighscoresModal/CenterContainer/Card/VBox/ButtonsRow" unique_id=987654332]
+custom_minimum_size = Vector2(150, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_quit_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_quit_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_quit_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "RESET SCORES"
+
+[node name="CloseButton" type="Button" parent="HighscoresModal/CenterContainer/Card/VBox/ButtonsRow" unique_id=987654333]
+custom_minimum_size = Vector2(150, 44)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.22, 0.25, 1)
+theme_override_colors/font_hover_color = Color(0.05, 0.05, 0.05, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_neutral_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_neutral_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_neutral_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_focus")
+text = "CLOSE"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="HighscoresButton" to="." method="_on_highscores_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="HighscoresModal/CenterContainer/Card/VBox/ButtonsRow/ResetButton" to="." method="_on_reset_highscores_pressed"]
+[connection signal="pressed" from="HighscoresModal/CenterContainer/Card/VBox/ButtonsRow/CloseButton" to="." method="_on_close_highscores_pressed"]

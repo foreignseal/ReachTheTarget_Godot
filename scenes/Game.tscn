@@ -102,17 +102,165 @@ script = ExtResource("9_manager")
 navigation_polygon = SubResource("NavigationPolygon_game")
 script = ExtResource("8_nav")
 
-[node name="ObstacleWall" parent="NavigationRegion2D" unique_id=1682371849 instance=ExtResource("7_wall")]
-position = Vector2(-120, -50)
-scale = Vector2(0.5, 2)
+[node name="BorderTop" parent="NavigationRegion2D" unique_id=200000001 instance=ExtResource("7_wall")]
+position = Vector2(0, -900)
+scale = Vector2(19, 0.375)
 
-[node name="DangerZone" parent="." unique_id=1567770249 instance=ExtResource("4_danger")]
+[node name="BorderBottom" parent="NavigationRegion2D" unique_id=200000002 instance=ExtResource("7_wall")]
+position = Vector2(0, 900)
+scale = Vector2(19, 0.375)
+
+[node name="BorderLeft" parent="NavigationRegion2D" unique_id=200000003 instance=ExtResource("7_wall")]
+position = Vector2(-1200, 0)
+scale = Vector2(0.375, 14.25)
+
+[node name="BorderRight" parent="NavigationRegion2D" unique_id=200000004 instance=ExtResource("7_wall")]
+position = Vector2(1200, 0)
+scale = Vector2(0.375, 14.25)
+
+[node name="HubWall_NW" parent="NavigationRegion2D" unique_id=200000005 instance=ExtResource("7_wall")]
+position = Vector2(-220, -180)
+scale = Vector2(0.6, 0.6)
+
+[node name="HubWall_NE" parent="NavigationRegion2D" unique_id=200000006 instance=ExtResource("7_wall")]
+position = Vector2(220, -180)
+scale = Vector2(0.6, 0.6)
+
+[node name="HubWall_SW" parent="NavigationRegion2D" unique_id=200000007 instance=ExtResource("7_wall")]
+position = Vector2(-220, 180)
+scale = Vector2(0.6, 0.6)
+
+[node name="HubWall_SE" parent="NavigationRegion2D" unique_id=200000008 instance=ExtResource("7_wall")]
+position = Vector2(220, 180)
+scale = Vector2(0.6, 0.6)
+
+[node name="Wall_N_Divider" parent="NavigationRegion2D" unique_id=200000009 instance=ExtResource("7_wall")]
+position = Vector2(0, -520)
+scale = Vector2(0.3, 3.8)
+
+[node name="Wall_NW_TopHoriz" parent="NavigationRegion2D" unique_id=200000010 instance=ExtResource("7_wall")]
+position = Vector2(-580, -680)
+scale = Vector2(4.5, 0.3)
+
+[node name="Wall_NE_TopHoriz" parent="NavigationRegion2D" unique_id=200000011 instance=ExtResource("7_wall")]
+position = Vector2(580, -680)
+scale = Vector2(4.5, 0.3)
+
+[node name="Wall_NW_Vert1" parent="NavigationRegion2D" unique_id=200000012 instance=ExtResource("7_wall")]
+position = Vector2(-420, -420)
+scale = Vector2(0.3, 2.5)
+
+[node name="Wall_NW_Horiz1" parent="NavigationRegion2D" unique_id=200000013 instance=ExtResource("7_wall")]
+position = Vector2(-780, -450)
+scale = Vector2(2.5, 0.3)
+
+[node name="Wall_NW_Vert2" parent="NavigationRegion2D" unique_id=200000014 instance=ExtResource("7_wall")]
+position = Vector2(-880, -220)
+scale = Vector2(0.3, 2)
+
+[node name="Wall_NE_Vert1" parent="NavigationRegion2D" unique_id=200000015 instance=ExtResource("7_wall")]
+position = Vector2(420, -420)
+scale = Vector2(0.3, 2.5)
+
+[node name="Wall_NE_Horiz1" parent="NavigationRegion2D" unique_id=200000016 instance=ExtResource("7_wall")]
+position = Vector2(780, -450)
+scale = Vector2(2.5, 0.3)
+
+[node name="Wall_NE_Vert2" parent="NavigationRegion2D" unique_id=200000017 instance=ExtResource("7_wall")]
+position = Vector2(880, -220)
+scale = Vector2(0.3, 2)
+
+[node name="Wall_West_MidHoriz" parent="NavigationRegion2D" unique_id=200000018 instance=ExtResource("7_wall")]
+position = Vector2(-700, 0)
+scale = Vector2(3.5, 0.3)
+
+[node name="Wall_East_MidHoriz" parent="NavigationRegion2D" unique_id=200000019 instance=ExtResource("7_wall")]
+position = Vector2(700, 0)
+scale = Vector2(3.5, 0.3)
+
+[node name="Wall_S_Divider" parent="NavigationRegion2D" unique_id=200000020 instance=ExtResource("7_wall")]
+position = Vector2(0, 520)
+scale = Vector2(0.3, 3.8)
+
+[node name="Wall_SW_BotHoriz" parent="NavigationRegion2D" unique_id=200000021 instance=ExtResource("7_wall")]
+position = Vector2(-580, 680)
+scale = Vector2(4.5, 0.3)
+
+[node name="Wall_SE_BotHoriz" parent="NavigationRegion2D" unique_id=200000022 instance=ExtResource("7_wall")]
+position = Vector2(580, 680)
+scale = Vector2(4.5, 0.3)
+
+[node name="Wall_SW_Vert1" parent="NavigationRegion2D" unique_id=200000023 instance=ExtResource("7_wall")]
+position = Vector2(-420, 420)
+scale = Vector2(0.3, 2.5)
+
+[node name="Wall_SW_Horiz1" parent="NavigationRegion2D" unique_id=200000024 instance=ExtResource("7_wall")]
+position = Vector2(-780, 450)
+scale = Vector2(2.5, 0.3)
+
+[node name="Wall_SW_Vert2" parent="NavigationRegion2D" unique_id=200000025 instance=ExtResource("7_wall")]
+position = Vector2(-880, 220)
+scale = Vector2(0.3, 2)
+
+[node name="Wall_SE_Vert1" parent="NavigationRegion2D" unique_id=200000026 instance=ExtResource("7_wall")]
+position = Vector2(420, 420)
+scale = Vector2(0.3, 2.5)
+
+[node name="Wall_SE_Horiz1" parent="NavigationRegion2D" unique_id=200000027 instance=ExtResource("7_wall")]
+position = Vector2(780, 450)
+scale = Vector2(2.5, 0.3)
+
+[node name="Wall_SE_Vert2" parent="NavigationRegion2D" unique_id=200000028 instance=ExtResource("7_wall")]
+position = Vector2(880, 220)
+scale = Vector2(0.3, 2)
+
+[node name="Pillar_NW" parent="NavigationRegion2D" unique_id=200000029 instance=ExtResource("7_wall")]
+position = Vector2(-950, -780)
+scale = Vector2(0.8, 0.8)
+
+[node name="Pillar_NE" parent="NavigationRegion2D" unique_id=200000030 instance=ExtResource("7_wall")]
+position = Vector2(950, -780)
+scale = Vector2(0.8, 0.8)
+
+[node name="Pillar_SW" parent="NavigationRegion2D" unique_id=200000031 instance=ExtResource("7_wall")]
+position = Vector2(-950, 780)
+scale = Vector2(0.8, 0.8)
+
+[node name="Pillar_SE" parent="NavigationRegion2D" unique_id=200000032 instance=ExtResource("7_wall")]
+position = Vector2(950, 780)
+scale = Vector2(0.8, 0.8)
+
+[node name="DangerZone1" parent="." unique_id=1567770249 instance=ExtResource("4_danger")]
+position = Vector2(-1124, -819)
+
+[node name="DangerZone4" parent="." unique_id=1228671075 instance=ExtResource("4_danger")]
+position = Vector2(1120, -815)
+
+[node name="DangerZone5" parent="." unique_id=1838427965 instance=ExtResource("4_danger")]
+position = Vector2(1116, 814)
+
+[node name="DangerZone6" parent="." unique_id=537167493 instance=ExtResource("4_danger")]
+position = Vector2(-1117, 814)
+
+[node name="DangerZone2" parent="." unique_id=1567770250 instance=ExtResource("4_danger")]
+position = Vector2(-669, -226.99998)
+scale = Vector2(1.72, 1.72)
+
+[node name="DangerZone7" parent="." unique_id=517838397 instance=ExtResource("4_danger")]
+position = Vector2(220.00012, -462)
+scale = Vector2(1.72, 1.72)
+
+[node name="DangerZone8" parent="." unique_id=1536744726 instance=ExtResource("4_danger")]
+position = Vector2(-202.00006, 465.00012)
+scale = Vector2(1.72, 1.72)
+
+[node name="DangerZone3" parent="." unique_id=1567770251 instance=ExtResource("4_danger")]
+position = Vector2(676.99994, 219)
+scale = Vector2(1.9599993, 1.9599993)
 
 [node name="SpawnPoint" type="Marker2D" parent="." unique_id=1343114655]
-position = Vector2(62, 153)
 
 [node name="Player" parent="." unique_id=1511318249 node_paths=PackedStringArray("spawn_point") instance=ExtResource("2_78awf")]
-position = Vector2(-594, 433)
 spawn_point = NodePath("../SpawnPoint")
 
 [node name="Screen" type="Camera2D" parent="Player" unique_id=683318714]
@@ -122,37 +270,50 @@ script = ExtResource("6_indicators")
 
 [node name="TargetSpawns" type="Node2D" parent="." unique_id=1381045291]
 script = ExtResource("5_spawns")
+initial_target_count = 3
 moving_target_ratio = 0.3
 
 [node name="Spawn1" type="Node2D" parent="TargetSpawns" unique_id=787345189]
-position = Vector2(-450, -200)
+position = Vector2(-950, -550)
 
 [node name="Spawn2" type="Node2D" parent="TargetSpawns" unique_id=488130399]
-position = Vector2(-450, 200)
+position = Vector2(-600, -780)
 
 [node name="Spawn3" type="Node2D" parent="TargetSpawns" unique_id=1283210757]
-position = Vector2(-250, -280)
+position = Vector2(-250, -450)
 
 [node name="Spawn4" type="Node2D" parent="TargetSpawns" unique_id=486352726]
-position = Vector2(-250, 280)
+position = Vector2(250, -450)
 
 [node name="Spawn5" type="Node2D" parent="TargetSpawns" unique_id=1232871005]
-position = Vector2(0, -220)
+position = Vector2(600, -780)
 
 [node name="Spawn6" type="Node2D" parent="TargetSpawns" unique_id=148250674]
-position = Vector2(0, 220)
+position = Vector2(950, -550)
 
 [node name="Spawn7" type="Node2D" parent="TargetSpawns" unique_id=1003495341]
-position = Vector2(250, -280)
+position = Vector2(-1050, -100)
 
 [node name="Spawn8" type="Node2D" parent="TargetSpawns" unique_id=264535900]
-position = Vector2(250, 280)
+position = Vector2(-1050, 100)
 
 [node name="Spawn9" type="Node2D" parent="TargetSpawns" unique_id=1587240670]
-position = Vector2(500, -200)
+position = Vector2(1050, -100)
 
 [node name="Spawn10" type="Node2D" parent="TargetSpawns" unique_id=62355709]
-position = Vector2(500, 200)
+position = Vector2(1050, 100)
+
+[node name="Spawn11" type="Node2D" parent="TargetSpawns" unique_id=62355710]
+position = Vector2(-950, 550)
+
+[node name="Spawn12" type="Node2D" parent="TargetSpawns" unique_id=62355711]
+position = Vector2(-250, 450)
+
+[node name="Spawn13" type="Node2D" parent="TargetSpawns" unique_id=62355712]
+position = Vector2(250, 450)
+
+[node name="Spawn14" type="Node2D" parent="TargetSpawns" unique_id=62355713]
+position = Vector2(950, 550)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1120676962]
 
