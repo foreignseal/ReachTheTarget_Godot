@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ckorya85re6s1"]
+
+[ext_resource type="Script" uid="uid://cr0i2u800f6t" path="res://scripts/Target.gd" id="1_77bgf"]
+[ext_resource type="Texture2D" uid="uid://c6gvxmfe2qo3y" path="res://icon.svg" id="2_aik7i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 55.0
+
+[node name="Target" type="Area2D" unique_id=1018898236 node_paths=PackedStringArray("message")]
+script = ExtResource("1_77bgf")
+message = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=368284938]
+modulate = Color(0.97, 0, 0, 1)
+texture = ExtResource("2_aik7i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=529271340]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
