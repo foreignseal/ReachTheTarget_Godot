@@ -2,18 +2,49 @@
 
 [ext_resource type="Script" uid="uid://cvhdd7qtuggyq" path="res://scripts/Player.gd" id="1_rvslj"]
 [ext_resource type="Texture2D" uid="uid://c6gvxmfe2qo3y" path="res://icon.svg" id="2_0bbpv"]
+[ext_resource type="Script" uid="uid://cr0i2u800f6t" path="res://scripts/Target.gd" id="3_0bbpv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
-radius = 64.0
-height = 128.0
+radius = 32.0
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 55.0
 
 [node name="Main" type="Node2D" unique_id=1105542259]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1741138853]
+position = Vector2(77, 346)
 script = ExtResource("1_rvslj")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1049027964]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_0bbpv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=48169805]
 shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="Target" type="Area2D" parent="." unique_id=1336743878 node_paths=PackedStringArray("message")]
+position = Vector2(1062, 376)
+script = ExtResource("3_0bbpv")
+message = NodePath("../Label")
+
+[node name="Sprite2D" type="Sprite2D" parent="Target" unique_id=671738051]
+modulate = Color(0.97, 0, 0, 1)
+texture = ExtResource("2_0bbpv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target" unique_id=37904577]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Label" type="Label" parent="." unique_id=435409345]
+offset_left = 522.0
+offset_top = 16.0
+offset_right = 677.0
+offset_bottom = 39.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "REACH THE TARGET!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Target" to="Target" method="_on_body_entered"]
